@@ -106,15 +106,18 @@ char *_strtok(char *str, const char *delim)
  */
 int is_valid_int(char *str)
 {
+	unsigned int i;
+
 	if (str == NULL)
 		return (0);
 
-	while (*str)
+	for (i = 0; str[i]; i++)
 	{
-		if (*str < '0' || *str > '9')
-			return (0);
-
-		str++;
+		if (str[i] < '0' || str[i] > '9')
+		{
+			if (str[i] != '-' || i != 0)
+				return (0);
+		}
 	}
 
 	return (1);
