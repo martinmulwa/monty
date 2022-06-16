@@ -66,7 +66,7 @@ void (*get_op_func(void))(stack_t **, unsigned int);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
 void op_pint(stack_t **stack, unsigned int line_number);
-int is_valid_int(char *str);
+void op_pop(stack_t **stack, unsigned int line_number);
 
 /* free_functions.c */
 void free_list(stack_t *head);
@@ -74,9 +74,8 @@ void free_op(void);
 
 /* strings.c */
 char *_strcpy(char *dest, const char *src);
-unsigned int _strlen(const char *str);
-int _strcmp(const char *s1, const char *s2);
 char *_strdup(const char *str);
 char *_strtok(char *str, const char *delim);
+int is_valid_int(char *str);
 
 #endif /* MONTY_H */

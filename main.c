@@ -39,7 +39,7 @@ int main(int argc, char **argv)
  */
 void exit_error(char *message)
 {
-	write(STDERR_FILENO, message, _strlen(message));
+	write(STDERR_FILENO, message, strlen(message));
 	write(STDERR_FILENO, "\n", 1);
 	exit(EXIT_FAILURE);
 }

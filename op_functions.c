@@ -76,23 +76,25 @@ void op_pint(stack_t **stack, unsigned int line_number)
 
 
 /**
- * is_valid_int - checks if a given string is a valid integer
- * @str: string
- *
- * Return: 1 if str is a valid integer. 0 otherwise
+ * op_pop - removes the top element of the stack
+ * @stack: pointer to the pointer to the first element in stack
+ * @line_number: line number of the instruction
  */
-int is_valid_int(char *str)
+void op_pop(stack_t **stack, unsigned int line_number)
 {
-	if (str == NULL)
-		return (0);
+	stack_t *tmp;
 
-	while (*str)
+	if (*stack == NULL)
 	{
-		if (*str < '0' || *str > '9')
-			return (0);
-
-		str++;
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		free_op();
+		exit(EXIT_FAILURE);
 	}
 
-	return (1);
+	tmp = *stack;
+	*stack = (*stack)->next;
+	free(tmp);
+
+	if (*stack)
+		(*stack)->prev = NULL;
 }
