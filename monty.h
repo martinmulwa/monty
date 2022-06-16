@@ -78,6 +78,7 @@ void op_mul(stack_t **stack, unsigned int line_number);
 
 /* op_functions3.c */
 void op_mod(stack_t **stack, unsigned int line_number);
+void op_pchar(stack_t **stack, unsigned int line_number);
 
 /* free_functions.c */
 void free_list(stack_t *head);

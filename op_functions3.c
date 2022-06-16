@@ -25,3 +25,28 @@ void op_mod(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (*stack)->next->n % (*stack)->n;
 	op_pop(stack, line_number);
 }
+
+
+/**
+ * op_pchar - prints the char at the top of the stack
+ * @stack: pointer to the pointer to the first element in stack
+ * @line_number: line number of the instruction
+ */
+void op_pchar(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		free_op();
+		exit(EXIT_FAILURE);
+	}
+
+	if ((*stack)->n < 0 || (*stack)->n > 127)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		free_op();
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%c\n", (*stack)->n);
+}
