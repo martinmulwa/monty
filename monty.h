@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <string.h>
 
+#define MAX_LEN 1024
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -53,10 +55,9 @@ typedef struct op_s
 
 extern op_t op;
 
-/* main.c */
-void exit_error(char *message);
-void read_file(void);
-void exec_code(char *line, unsigned int line_number);
+/* monty.c */
+void monty(void);
+void exec_op(char *line, unsigned int line_number);
 void get_op(char *line);
 
 /* get_op_func.c */
