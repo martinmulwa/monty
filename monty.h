@@ -69,6 +69,9 @@ void op_pint(stack_t **stack, unsigned int line_number);
 void op_pop(stack_t **stack, unsigned int line_number);
 void op_swap(stack_t **stack, unsigned int line_number);
 
+/* op_functions2.c */
+void op_add(stack_t **stack, unsigned int line_number);
+
 /* free_functions.c */
 void free_list(stack_t *head);
 void free_op(void);
