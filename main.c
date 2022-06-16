@@ -73,7 +73,7 @@ void exec_code(char *line, unsigned int line_number)
 
 	get_op(line);
 
-	if (op.opcode == NULL)
+	if (op.opcode == NULL || op.opcode[0] == '#')
 		return;
 
 	f = get_op_func();
