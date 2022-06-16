@@ -50,3 +50,23 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 
 	printf("%c\n", (*stack)->n);
 }
+
+
+/**
+ * op_pstr - prints the string starting at the top of the stack
+ * @stack: pointer to the pointer to the first element in stack
+ * @line_number: line number of the instruction
+ */
+void op_pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *trav = *stack;
+
+	while (trav && trav->n)
+	{
+		printf("%c", trav->n);
+		trav = trav->next;
+	}
+
+	printf("\n");
+	(void)line_number;
+}
