@@ -17,3 +17,15 @@ void op_add(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (*stack)->n + (*stack)->next->n;
 	op_pop(stack, line_number);
 }
+
+
+/**
+ * op_nop - does nothing
+ * @stack: pointer to the pointer to the first element in stack
+ * @line_number: line number of the instruction
+ */
+void op_nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
