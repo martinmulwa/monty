@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <ctype.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -65,7 +65,10 @@ void (*get_op_func(void))(stack_t **, unsigned int);
 /* op_functions.c */
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
+void op_pint(stack_t **stack, unsigned int line_number);
 int is_valid_int(char *str);
+
+/* free_functions.c */
 void free_list(stack_t *head);
 void free_op(void);
 
