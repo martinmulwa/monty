@@ -2,9 +2,9 @@
 #define MONTY_H
 
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -36,8 +36,44 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct op_s - opcode, argument and stack
+ * @input: stream represent input instruction
+ * @opcode: the opcode
+ * @arg: argument
+ * @head: linked list representing stack
+ */
+typedef struct op_s
+{
+	FILE *input;
+	char *opcode;
+	char *arg;
+	stack_t *head;
+} op_t;
+
+extern op_t op;
+
 /* main.c */
 void exit_error(char *message);
-void read_file(FILE *input);
+void read_file(void);
+void exec_code(char *line, unsigned int line_number);
+void get_op(char *line);
+
+/* get_op_func.c */
+void (*get_op_func(void))(stack_t **, unsigned int);
+
+/* op_functions.c */
+void op_push(stack_t **stack, unsigned int line_number);
+void op_pall(stack_t **stack, unsigned int line_number);
+int is_valid_int(char *str);
+void free_list(stack_t *head);
+void free_op(void);
+
+/* strings.c */
+char *_strcpy(char *dest, const char *src);
+unsigned int _strlen(const char *str);
+int _strcmp(const char *s1, const char *s2);
+char *_strdup(const char *str);
+char *_strtok(char *str, const char *delim);
 
 #endif /* MONTY_H */
