@@ -61,7 +61,7 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *trav = *stack;
 
-	while (trav && trav->n)
+	while (trav && (trav->n > 0 && trav->n < 128))
 	{
 		printf("%c", trav->n);
 		trav = trav->next;
